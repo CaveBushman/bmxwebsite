@@ -1,0 +1,41 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<br>
+<div class = "container"><h1 class = "text-center">Seznam jezdců</h1></div>
+
+<br>
+<div class = "container">
+<a href = "{% url 'riders:plate-req'%}">Zde</a> můžeš požádat o startovní číslo
+</div>
+
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">St.č.</th>
+            <th scope="col">Příjmení</th>
+            <th scope="col">Jméno</th>
+            <th scope="col">UCI ID</th>
+            <th scope="col">Klub</th>
+            <th scope="col">Detail jezdce</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rider in riders %}
+        <tr>
+            <th scope="row" class = "">{{ rider.plate }}</th>
+            <td>{{ rider.last_name }}</td>
+            <td>{{ rider.first_name }}</td>
+            <td>{{ rider.uci_id }}</td>
+            <td>{{ rider.club }}</td>
+            <td>detail</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

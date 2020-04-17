@@ -1,0 +1,71 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<br>
+<br>
+<div class="container"><h1 class="text-center">Žádost o přidělení startovního čísla</h1></div>
+<br>
+
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label for="id_first_name">First name:</label>
+        <input type="text" name="first_name" maxlength="255" required id="id_first_name">
+        <br>
+
+        <label for="id_last_name">Last name:</label>
+        <input type="text" name="last_name" maxlength="255" required id="id_last_name">
+        <br>
+
+        <label for="id_uci_id">Uci id:</label>
+        <input type="text" name="uci_id" maxlength="255" required id="id_uci_id">
+        <br>
+        <label for="id_gender">Gender:</label>
+        <select name="gender" id="id_gender">
+            <option value="Man/Boy">Man/Boy</option>
+            <option value="Woman/Girl">Woman/Girl</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+
+        <label for="id_club">Club:</label>
+        <select name="club" required id="id_club">
+            <option value="" selected>---------</option>
+            <option value="1">BIKROSCLUB ŘEPY</option>
+            <option value="3">BIKE TEAM UNIČOV</option>
+        </select>
+        <br>
+        <!--        <label for="id_plate">Plate:</label>-->
+        <!--        <input type="text" name="plate" required id="id_plate">-->
+        <!--        <br>-->
+        <label for="id_plate">Plate:</label>
+        <select name="plate" required id="id_plate">
+            <option value="" selected>---------</option>
+            <option value="99">99</option>
+        </select>
+        <br>
+        <label for="id_emergency_contact">Emergency contact:</label>
+        <input type="text" name="emergency_contact" maxlength="255" id="id_emergency_contact">
+        <br>
+        <label for="id_emergency_phone">Emergency phone:</label>
+        <input type="text" name="emergency_phone" maxlength="255" id="id_emergency_phone">
+        <br>
+        <label for="id_is_challenge">Is challenge:</label>
+        <input type="checkbox" name="is_challenge" id="id_is_challenge" checked>
+        <br>
+        <label for="id_is_elite">Is elite:</label>
+        <input type="checkbox" name="is_elite" id="id_is_elite">
+        <br>
+        <label for="id_is_cruiser">Is cruiser:</label>
+        <input type="checkbox" name="is_cruiser" id="id_is_cruiser">
+
+        <br>
+        <button type="submit" class="btn btn-primary">Vytvoř</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+

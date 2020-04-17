@@ -8,7 +8,7 @@ class Rider(models.Model):
     GENDER = (('Man/Boy', 'Man/Boy'), ('Woman/Girl', 'Woman/Girl'), ('Other', 'Other'))
 
     first_name = models.CharField(max_length=255)
-    surname = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
     uci_id = models.CharField(max_length=255, unique=True)
 
     gender = models.CharField(max_length=50, default='M', choices=GENDER)
@@ -39,5 +39,5 @@ class Rider(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        full_name = self.surname + " " + self.first_name + " UCI ID: " + self.uci_id
+        full_name = self.last_name + " " + self.first_name + " UCI ID: " + self.uci_id
         return full_name

@@ -1,13 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Seznam klubů</title>
-</head>
-<body>
+{% extends 'articles/base.html' %}
 
-Zde bude seznam klubů
+{% block content %}
+<br>
+<div class = "container"><h1 class = "text-center">Seznam klubů</h1></div>
 
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Název klubu</th>
+            <th scope="col">Město</th>
+            <th scope="col">Kraj</th>
+            <th scope="col">Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for club in clubs %}
+        <tr>
+            <th scope="row">{{ club.name }}</th>
+            <td>{{ club.city }}</td>
+            <td>{{ club.region }}</td>
+            <td><a href={% url 'clubs:club-detail' club.id %}> Detail</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-</body>
-</html>
+    </table>
+</div>
+
+{% endblock %}

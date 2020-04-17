@@ -19,12 +19,16 @@ class Club(models.Model):
     region = models.CharField(max_length=255, null=True, choices=REGION)
 
     web = models.URLField(null=True, blank=True)
+    contact_person = models.CharField(max_length=255, null=True, blank=True)
+    contact_phone = models.CharField(max_length=255, null=True, blank=True)
     contact_email = models.EmailField(null=True, blank=True)
 
     bank_account = models.CharField(max_length=255, null=True, blank=True)
     bank_code = models.CharField(max_length=100, null=True, blank=True)
     swift = models.CharField(max_length=255, null=True, blank=True)
     iban = models.CharField(max_length=255, null=True, blank=True)
+
+    paypal_id = models.CharField(max_length=255, null=True, blank=True)
 
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     is_active = models.BooleanField(default=True)

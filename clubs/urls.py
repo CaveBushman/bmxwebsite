@@ -20,5 +20,6 @@ from clubs import views
 app_name = 'clubs'
 
 urlpatterns = [
-    path('', views.clubs, name = "clubs"),
+    path('', views.clubs, name="clubs"),
+    path('detail/<str:pk>', views.club_detail, name="club-detail")
 ]
