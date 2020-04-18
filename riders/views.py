@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Rider
+from clubs.models import Club
 from .forms import RiderForm
 import requests
-
 
 
 # Create your views here.
@@ -29,8 +29,8 @@ def plate_req(request):
     else:
 
         form = RiderForm()
-        context = {'form': form}
+        clubs = Club.objects.order_by('name')
+        plates = (20, 21, 22, 23, 24)
+        context = {'form': form, 'plates': plates, 'clubs':clubs}
 
         return render(request, 'riders/plate_req.html', context)
-
-

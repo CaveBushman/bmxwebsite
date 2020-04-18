@@ -8,7 +8,7 @@ def clubs(request):
     if request == 'POST':
         pass
     else:
-        clubs = Club.objects.all()
+        clubs = Club.objects.order_by('name')
         context = {"clubs":clubs}
         return render(request, 'clubs/clubs.html', context)
 

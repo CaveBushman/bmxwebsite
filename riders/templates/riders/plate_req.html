@@ -7,62 +7,134 @@
 <br>
 
 <div class="container">
-    <form action="" method="post">
+    <form action="" method="post" class ="needs-validation">
         {% csrf_token %}
 
-        <label for="id_first_name">First name:</label>
-        <input type="text" name="first_name" maxlength="255" required id="id_first_name">
-        <br>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_uci_id">UCI ID:</label>
+                    <input type="text" name="uci_id" maxlength="255" required id="id_uci_id" class="form-control is-valid">
+                    <div class="valid-feedback">UCI ID ověřeno</div>
+                    <div class="invalid-feedback">UCI ID neexistuje</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_plate">Vyber si startovní číslo:</label>
+                    <select name="plate" required id="id_plate" class="form-control">
+                        <option value="" selected>---------</option>
+                        {% for plate in plates %}
+                        <option value="{{ plate }}">{{ plate }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_first_name">Jméno:</label>
+                    <input type="text" name="first_name" maxlength="255" required id="id_first_name"
+                           class="form-control" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_last_name">Příjmení:</label>
+                    <input type="text" name="last_name" maxlength="255" required id="id_last_name" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_date_of_birthday">Datum narození:</label>
+                    <input type="text" name="date_of_birthday" id="id_date_of_birthday" class="form-control">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_gender">Pohlaví:</label>
+                    <select name="gender" id="id_gender" class="form-control">
+                        <option value="Muž/Male">Muž/Male</option>
+                        <option value="Žena/Female">Žena/Female</option>
+                        <option value="Ostatní/Other">Ostatní/Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_email">Zadej svůj e-mail:</label>
+                    <input type="email" name="email" maxlength="254" id="id_email" class="form-control">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_club">Zadej svůj klub:</label>
+                    <select name="club" required id="id_club" class="form-control">
+                        <option value="" selected>---------</option>
+                        {% for club in clubs %}
+                        <option value="{{ club.id }}">{{ club.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
 
-        <label for="id_last_name">Last name:</label>
-        <input type="text" name="last_name" maxlength="255" required id="id_last_name">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_emergency_contact">Kontaktní osoba pro případ nouze:</label>
+                    <input type="text" name="emergency_contact" maxlength="255" id="id_emergency_contact"
+                           class="form-control">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="id_emergency_phone">Telefon na nouzový kontakt:</label>
+                    <input type="text" name="emergency_phone" maxlength="255" id="id_emergency_phone"
+                           class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_challenge" id="id_is_challenge" checked
+                               class="form-check-input">
+                        <label for="id_is_challenge" class="form-check-label">Jezdíš na 20" kole?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_cruiser" id="id_is_cruiser" class="form-check-input">
+                        <label for="id_is_cruiser" class="form-check-label">Jezdíš na 24" kole (cruiser)?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_elite" id="id_is_elite" class="form-check-input">
+                        <label for="id_is_elite" class="form-check-label">Jsi jezdec kategorie Junior/Elite?</label>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br>
-
-        <label for="id_uci_id">Uci id:</label>
-        <input type="text" name="uci_id" maxlength="255" required id="id_uci_id">
-        <br>
-        <label for="id_gender">Gender:</label>
-        <select name="gender" id="id_gender">
-            <option value="Man/Boy">Man/Boy</option>
-            <option value="Woman/Girl">Woman/Girl</option>
-            <option value="Other">Other</option>
-        </select>
-        <br>
-
-        <label for="id_club">Club:</label>
-        <select name="club" required id="id_club">
-            <option value="" selected>---------</option>
-            <option value="1">BIKROSCLUB ŘEPY</option>
-            <option value="3">BIKE TEAM UNIČOV</option>
-        </select>
-        <br>
-        <!--        <label for="id_plate">Plate:</label>-->
-        <!--        <input type="text" name="plate" required id="id_plate">-->
-        <!--        <br>-->
-        <label for="id_plate">Plate:</label>
-        <select name="plate" required id="id_plate">
-            <option value="" selected>---------</option>
-            <option value="99">99</option>
-        </select>
-        <br>
-        <label for="id_emergency_contact">Emergency contact:</label>
-        <input type="text" name="emergency_contact" maxlength="255" id="id_emergency_contact">
-        <br>
-        <label for="id_emergency_phone">Emergency phone:</label>
-        <input type="text" name="emergency_phone" maxlength="255" id="id_emergency_phone">
-        <br>
-        <label for="id_is_challenge">Is challenge:</label>
-        <input type="checkbox" name="is_challenge" id="id_is_challenge" checked>
-        <br>
-        <label for="id_is_elite">Is elite:</label>
-        <input type="checkbox" name="is_elite" id="id_is_elite">
-        <br>
-        <label for="id_is_cruiser">Is cruiser:</label>
-        <input type="checkbox" name="is_cruiser" id="id_is_cruiser">
-
-        <br>
-        <button type="submit" class="btn btn-primary">Vytvoř</button>
-
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" >Odešli žádost o startovní číslo</button>
+            </div>
+            <div class="col"></div>
+        </div>
     </form>
 
 </div>

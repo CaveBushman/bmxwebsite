@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="cs">
+
+{% load static %}
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,7 +31,7 @@
         <a class="nav-link" href="{% url 'articles:articles' %}">Články</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Kalendář závodů</a>
+        <a class="nav-link" href="{% url 'events:events' %}">Kalendář závodů</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Ranking</a>

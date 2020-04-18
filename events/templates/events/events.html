@@ -1,0 +1,40 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+    <h1 class = "text-center">Kalendář závodů</h1>
+</div>
+<br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="">
+            <tr>
+                <th scope="col" class="text-justify">Datum</th>
+                <th scope="col">Název</th>
+                <th scope="col">Typ</th>
+                <th scope="col">Pořadatel</th>
+                <th scope="col">Propozice</th>
+                <th scope="col">Přihlášení</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+            <tr>
+                <th scope="row" class="">{{ event.date }}</th>
+                <td>{{ event.name }}</td>
+
+                <td><span class="text-primary">{{ event.type.name }}</span></td>
+
+                <td>{{ event.organizer }}</td>
+                <td>Propozice</td>
+                <td>Přihlášení</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

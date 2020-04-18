@@ -5,10 +5,12 @@ from clubs.models import Club
 # Create your models here.
 
 class Rider(models.Model):
-    GENDER = (('Man/Boy', 'Man/Boy'), ('Woman/Girl', 'Woman/Girl'), ('Other', 'Other'))
+    GENDER = (('Muž/Male', 'Muž/Male'), ('Žena/Female', 'Žena/Female'), ('Ostatní/Other', 'Ostatní/Other'))
 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    date_of_birthday = models.DateField(blank=True, null=True)
+
     uci_id = models.CharField(max_length=255, unique=True)
 
     gender = models.CharField(max_length=50, default='M', choices=GENDER)
@@ -17,7 +19,7 @@ class Rider(models.Model):
 
     club = models.ForeignKey(Club, null=True, on_delete=models.SET_NULL)
 
-    plate = models.IntegerField(unique=True)
+    plate = models.IntegerField()
     plate_2 = models.IntegerField(null=True, blank=True)
 
     transponder_20 = models.CharField(max_length=10, null=True, blank=True)
@@ -33,6 +35,8 @@ class Rider(models.Model):
     is_cruiser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_approwed = models.BooleanField(default=False)
+
+    have_valid_licence = models.BooleanField(default=True)
 
     path_to_photo = models.CharField(max_length=255, null=True, blank=True)
 
