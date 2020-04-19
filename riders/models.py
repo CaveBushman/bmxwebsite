@@ -9,7 +9,7 @@ class Rider(models.Model):
 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    date_of_birthday = models.DateField(blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
 
     uci_id = models.CharField(max_length=255, unique=True)
 
@@ -45,3 +45,9 @@ class Rider(models.Model):
     def __str__(self):
         full_name = self.last_name + " " + self.first_name + " UCI ID: " + self.uci_id
         return full_name
+
+    def count(self):
+        pass
+
+    def lastNameUppercase(self):
+        return self.last_name.upper()

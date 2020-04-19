@@ -45,6 +45,7 @@ class EventCategories(models.Model):
     charge_onspot = models.IntegerField()
 
     is_valid = models.BooleanField(default=True)
+    order = models.IntegerField(default=0)
 
     def __str__(self):
         full_return = self.type.name + " - " + self.category.name
