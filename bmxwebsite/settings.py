@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'articles',
     'rankings',
     'events',
+    'dashboards',
 ]
 
 MIDDLEWARE = [

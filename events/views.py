@@ -10,6 +10,5 @@ def events(request):
     else:
         events = Event.objects.order_by('date', 'type')
         context = {'events': events}
-        for event in events:
-            print(event.type)
+
         return render(request, 'events/events.html', context)

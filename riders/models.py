@@ -23,9 +23,13 @@ class Rider(models.Model):
     plate_2 = models.IntegerField(null=True, blank=True)
 
     transponder_20 = models.CharField(max_length=10, null=True, blank=True)
+    is_valid_transponder_20 = models.BooleanField(default=True)
     transponder_24 = models.CharField(max_length=10, null=True, blank=True)
+    is_valid_transponder_24 = models.BooleanField(default=True)
     transponder_mtb = models.CharField(max_length=10, null=True, blank=True)
+    is_valid_transponder_mtb = models.BooleanField(default=True)
     transponder_other = models.CharField(max_length=10, null=True, blank=True)
+    is_valid_transponder_other = models.BooleanField(default=True)
 
     emergency_contact = models.CharField(max_length=255, null=True, blank=True)
     emergency_phone = models.CharField(max_length=255, null=True, blank=True)
@@ -46,8 +50,6 @@ class Rider(models.Model):
         full_name = self.last_name + " " + self.first_name + " UCI ID: " + self.uci_id
         return full_name
 
-    def count(self):
-        pass
-
     def lastNameUppercase(self):
         return self.last_name.upper()
+

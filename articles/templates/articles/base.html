@@ -25,10 +25,10 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{% url 'articles:home' %}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'articles:articles' %}">Články</a>
+        <a class="nav-link" href="{% url 'articles:home' %}">Články</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'events:events' %}">Kalendář závodů</a>
@@ -43,7 +43,7 @@
         <a class="nav-link" href="{% url 'riders:riders' %}">Jezdci</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Administrace</a>
+        <a class="nav-link" href="{% url 'dashboards:dashboards' %}">Administrace</a>
       </li>
 
 <!--    <form class="form-inline my-2 my-lg-0">-->

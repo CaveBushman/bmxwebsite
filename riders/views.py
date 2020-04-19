@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Rider
 from clubs.models import Club
 from .forms import RiderForm
-from .func import import_csv
+from .func import import_csv, validation_licence
 
 
 # Create your views here.
@@ -11,7 +11,7 @@ def riders(request):
     if request.method == 'POST':
         pass
     else:
-        riders = Rider.objects.all()
+        riders = Rider.objects.filter(is_active="True")
         context = {"riders": riders}
         return render(request, 'riders/riders.html', context)
 

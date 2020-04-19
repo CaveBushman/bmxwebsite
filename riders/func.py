@@ -1,5 +1,8 @@
 import os
 import csv
+from datetime import date
+import requests
+
 from riders.models import Rider
 from clubs.models import Club
 from django.shortcuts import render, redirect, HttpResponse
@@ -35,7 +38,10 @@ def import_csv(request):
             new_rider.transponder_20 = row[29]
             new_rider.transponder_24 = row[30]
             new_rider.is_approwed = True
-
+            if row[11] == "BMX &amp; 4X Team BRNO":
+                row[11] = "BMX & 4X Team BRNO"
+            if row[11] == "BMX &amp; 4X TEAM OLYMPUS":
+                row[11] = "BMX & 4X TEAM OLYMPUS"
             club = row[11].upper()
             print(club)
             try:
@@ -43,6 +49,31 @@ def import_csv(request):
                 new_rider.club = rider_club
             except:
                 pass
+            new_rider.is_challenge = row[14]
+            new_rider.is_cruiser = row[15]
             new_rider.save()
 
     return HttpResponse('<h1>Jezdci převedeni</h1>')
+
+
+def validation_licence(request):
+    now = date.today()
+    now = now.year
+
+    basicAuthCredentials = ()
+
+    riders = Rider.objects.all()
+
+    for rider in riders:
+        uci_id = rider.uci_id
+        url_uciid = (f'https://data.ceskysvazcyklistiky.cz/licence-api/is-valid?uciId={uci_id}&year={now}')
+        try:
+            dataJSON = requests.get(url_uciid, auth=basicAuthCredentials)
+            if dataJSON.text == "false" or dataJSON.status_code == 404:
+                rider.have_valid_licence = False
+                print(rider.last_name, " nemá platnou licenci")
+                rider.save()
+        except:
+            pass
+
+    return HttpResponse('<h1>ověření validity licencí skončilo</h1>')

@@ -19,6 +19,7 @@
             <th scope="col">Jméno</th>
             <th scope="col">UCI ID</th>
             <th scope="col">Klub</th>
+            <th scope="col">Poznámka</th>
             <th scope="col">Detail jezdce</th>
         </tr>
         </thead>
@@ -26,10 +27,20 @@
         {% for rider in riders %}
         <tr>
             <th scope="row" class = "">{{ rider.plate }}</th>
+
+
             <td>{{ rider.last_name }}</td>
+
+
+
             <td>{{ rider.first_name }}</td>
             <td>{{ rider.uci_id }}</td>
             <td>{{ rider.club }}</td>
+            {% if rider.have_valid_licence %}
+            <td></td>
+            {% else %}
+            <td class = "badge badge-danger text-wrap align-middle ">NEPLATNÁ LICENCE PRO TENTO ROK</td>
+            {% endif%}
             <td>detail</td>
         </tr>
         {% endfor %}
