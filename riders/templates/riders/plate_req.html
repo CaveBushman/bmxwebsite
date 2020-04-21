@@ -24,7 +24,7 @@
                     <label for="id_plate">Vyber si startovní číslo:</label>
                     <select name="plate" required id="id_plate" class="form-control">
                         <option value="" selected>---------</option>
-                        {% for plate in plates %}
+                        {% for plate in free_plates %}
                         <option value="{{ plate }}">{{ plate }}</option>
                         {% endfor %}
                     </select>

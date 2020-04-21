@@ -1,5 +1,6 @@
 from django.db import models
 from clubs.models import Club
+from riders.models import Rider
 
 
 # Create your models here.
@@ -70,3 +71,24 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class EventRegistration(models.Model):
+    event = models.ForeignKey(
+
+        Event,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+
+    rider = models.ForeignKey(
+        Rider,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+    event_category = models.ForeignKey(
+        EventCategories,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+    charge_was_paid = models.BooleanField()

@@ -22,3 +22,10 @@ def home(request):
 
         context = {'riders': riders, 'clubs': clubs, 'events': events,}
         return render(request, 'articles/home.html', context)
+
+def articles(request):
+    if request == 'POST':
+        pass
+    else:
+        context = {}
+        return render(request, 'articles/articles.html', context)

@@ -13,7 +13,9 @@ class Rider(models.Model):
 
     uci_id = models.CharField(max_length=255, unique=True)
 
-    gender = models.CharField(max_length=50, default='M', choices=GENDER)
+    gender = models.CharField(max_length=50, default='Muž/Male', choices=GENDER)
+
+    nationality = models.CharField(max_length=3, default='CZE')
 
     email = models.EmailField(blank=True, null=True)
 
@@ -52,4 +54,3 @@ class Rider(models.Model):
 
     def lastNameUppercase(self):
         return self.last_name.upper()
-
